@@ -6,13 +6,14 @@
 /*   By: amerlon- <amerlon-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/27 21:26:50 by amerlon-          #+#    #+#             */
-/*   Updated: 2018/12/04 22:01:57 by amerlon-         ###   ########.fr       */
+/*   Updated: 2019/01/27 12:21:50 by amerlon-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_putchar(char c)
+int		ft_putchar(char c)
 {
 	write(1, &c, 1);
+	return (1);
 }

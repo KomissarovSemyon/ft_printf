@@ -6,7 +6,7 @@
 /*   By: amerlon- <amerlon-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/21 23:21:11 by amerlon-          #+#    #+#             */
-/*   Updated: 2019/01/27 09:19:19 by amerlon-         ###   ########.fr       */
+/*   Updated: 2019/01/27 12:20:13 by amerlon-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,11 +65,11 @@ char				*ft_strtrim(char const *s);
 char				*ft_itoa(int n);
 char				**ft_strsplit(char const *s, char c);
 
-void				ft_putchar(char c);
+int					ft_putchar(char c);
 int					ft_putstr(char const *s);
 int					ft_putendl(char const *s);
 int					ft_putnbr(int n);
-void				ft_putchar_fd(char s, int fd);
+int					ft_putchar_fd(char s, int fd);
 int					ft_putstr_fd(char const *s, int fd);
 int					ft_putendl_fd(char const *s, int fd);
 int					ft_putnbr_fd(int n, int fd);
