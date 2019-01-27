@@ -6,7 +6,7 @@
 #    By: amerlon- <amerlon-@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/01/27 05:01:06 by amerlon-          #+#    #+#              #
-#    Updated: 2019/01/27 10:25:14 by amerlon-         ###   ########.fr        #
+#    Updated: 2019/01/27 13:10:22 by amerlon-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,7 @@ OBJ_DIR = ./obj
 TEST_DIR = ./test
 
 SRC = ft_printf.c \
-		get_token.c
+		token_processing.c
 
 OBJS = $(addprefix $(OBJ_DIR)/,$(SRC:%.c=%.o))
 LIBFT = $(LIBFT_DIR)/libft.a
@@ -35,11 +35,11 @@ $(LIBFT):
 	@make -C libft
 
 $(NAME): $(LIBFT) $(OBJS)
-	@ar rcs $(NAME) $(OBJS) $(LIBFT)
+	ar rcs $(NAME) $(OBJS) $(LIBFT)
 	@ranlib $(NAME)
 
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
-	@gcc $(FLAGS) -c $< -I$(INC_DIR) -I$(LIBFT_H) -o $@
+	gcc -g $(FLAGS) -c $< -I$(INC_DIR) -I$(LIBFT_H) -o $@
 
 clean:
 	@rm -rf $(OBJ_DIR)
@@ -57,11 +57,10 @@ norm:
 
 test:
 	@sed 's/printf(/ft_printf(/2' test/test.c > test/test_ft.c
-	@gcc $(TEST_DIR)/test.c $(NAME) $(LIBFT) -I$(INC_DIR) -I$(LIBFT_H) -o test_output_bin
-	@gcc $(TEST_DIR)/test_ft.c $(NAME) $(LIBFT) -I$(INC_DIR) -I$(LIBFT_H) -o test_output_ft_bin
+	@gcc -g $(TEST_DIR)/test.c $(NAME) $(LIBFT) -I$(INC_DIR) -I$(LIBFT_H) -o test_output_bin
+	@gcc -g $(TEST_DIR)/test_ft.c $(NAME) $(LIBFT) -I$(INC_DIR) -I$(LIBFT_H) -o test_output_ft_bin
 	@./test_output_bin > test_output
 	@./test_output_ft_bin > test_output_ft
-	@rm -rf test_output_bin test_output_ft_bin
 	@diff -y test_output test_output_ft
 
 diff:

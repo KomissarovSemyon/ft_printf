@@ -2,4 +2,7 @@ libftprintf.a
 obj
 test_output
 test_output_ft
+test_output_bin
+test_output_ft_bin
 test/test_ft.c
+*.dSYM
