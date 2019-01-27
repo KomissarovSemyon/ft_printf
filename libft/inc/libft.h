@@ -6,7 +6,7 @@
 /*   By: amerlon- <amerlon-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/21 23:21:11 by amerlon-          #+#    #+#             */
-/*   Updated: 2019/01/24 14:31:58 by amerlon-         ###   ########.fr       */
+/*   Updated: 2019/01/27 09:19:19 by amerlon-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,13 +66,13 @@ char				*ft_itoa(int n);
 char				**ft_strsplit(char const *s, char c);
 
 void				ft_putchar(char c);
-void				ft_putstr(char const *s);
-void				ft_putendl(char const *s);
-void				ft_putnbr(int n);
+int					ft_putstr(char const *s);
+int					ft_putendl(char const *s);
+int					ft_putnbr(int n);
 void				ft_putchar_fd(char s, int fd);
-void				ft_putstr_fd(char const *s, int fd);
-void				ft_putendl_fd(char const *s, int fd);
-void				ft_putnbr_fd(int n, int fd);
+int					ft_putstr_fd(char const *s, int fd);
+int					ft_putendl_fd(char const *s, int fd);
+int					ft_putnbr_fd(int n, int fd);
 
 typedef struct		s_list
 {

@@ -6,19 +6,20 @@
 /*   By: amerlon- <amerlon-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/27 22:08:44 by amerlon-          #+#    #+#             */
-/*   Updated: 2018/12/04 22:02:20 by amerlon-         ###   ########.fr       */
+/*   Updated: 2019/01/27 09:12:29 by amerlon-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_putstr_fd(char const *s, int fd)
+int		ft_putstr_fd(char const *s, int fd)
 {
 	int	i;
 
 	if (!s)
-		return ;
+		return (-1);
 	i = -1;
 	while (s[++i])
 		write(fd, s + i, 1);
+	return (i);
 }
