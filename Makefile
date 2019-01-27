@@ -6,7 +6,7 @@
 #    By: amerlon- <amerlon-@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/01/27 05:01:06 by amerlon-          #+#    #+#              #
-#    Updated: 2019/01/27 06:25:53 by amerlon-         ###   ########.fr        #
+#    Updated: 2019/01/27 07:01:39 by amerlon-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,7 +22,6 @@ TEST_DIR = ./test
 SRC = ft_printf.c
 
 OBJS = $(addprefix $(OBJ_DIR)/,$(SRC:%.c=%.o))
-TEST = $(TEST_DIR)/test.c
 LIBFT = $(LIBFT_DIR)/libft.a
 
 all: $(OBJ_DIR) $(NAME)
@@ -55,7 +54,12 @@ norm:
 	@norminette $(SRC_DIR) $(INC_DIR)
 
 test:
-	@gcc $(TEST) $(NAME) -o test_output
-	@./test_output
+	@sed 's/printf(/ft_printf(/2' test/test.c > test/test_ft.c
+	@gcc $(TEST_DIR)/test.c $(NAME) -I$(INC_DIR) -o test_output_bin
+	@gcc $(TEST_DIR)/test_ft.c $(NAME) -I$(INC_DIR) -o test_output_ft_bin
+	@./test_output_bin > test_output
+	@./test_output_ft_bin > test_output_ft
+	@rm -rf test_output_bin test_output_ft_bin
+	@diff -y test_output test_output_ft
 
 .PHONY: all clean fclean re norm test
