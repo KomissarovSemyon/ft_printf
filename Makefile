@@ -6,7 +6,7 @@
 #    By: amerlon- <amerlon-@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/01/27 05:01:06 by amerlon-          #+#    #+#              #
-#    Updated: 2019/01/27 09:43:34 by amerlon-         ###   ########.fr        #
+#    Updated: 2019/01/27 10:25:14 by amerlon-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +19,8 @@ INC_DIR = ./inc
 OBJ_DIR = ./obj
 TEST_DIR = ./test
 
-SRC = ft_printf.c
+SRC = ft_printf.c \
+		get_token.c
 
 OBJS = $(addprefix $(OBJ_DIR)/,$(SRC:%.c=%.o))
 LIBFT = $(LIBFT_DIR)/libft.a
