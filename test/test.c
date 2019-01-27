@@ -6,7 +6,7 @@
 /*   By: amerlon- <amerlon-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/27 05:03:36 by amerlon-          #+#    #+#             */
-/*   Updated: 2019/01/27 06:53:41 by amerlon-         ###   ########.fr       */
+/*   Updated: 2019/01/27 09:35:06 by amerlon-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,18 @@
 
 int	main(void)
 {
-	printf(" -%d\n", printf("%s", "sadsd"));
+	/*
+	**	NO PARAMETERS, NO FLAGS
+	*/
+	printf(" -%d\n", printf("aausbdi"));
+	// printf(" -%d\n", printf(""));
+
+	/*
+	**	BASIC STRINGS
+	*/
 	printf(" -%d\n", printf("%s", "sadsd"));
 	printf(" -%d\n", printf("%s", "s"));
-	printf(" -%d\n", printf("%s", ""));
-	// printf(" -%d\n", printf("%s", NULL));
+	printf(" -%d\n", printf("%s", NULL));
+	// printf(" -%d\n", printf("%s", ""));
 	return (0);
 }
