@@ -1,0 +1,6 @@
+"basic char %cqwe", 97
+"basic multiple chars %c - %cqwe", 97, 97
+"double chars %c%cqwe", 97, 97
+"basic string %sqwe", "asdas"
+"empty string %sqwe", ""
+"NULL string %sqwe", NULL

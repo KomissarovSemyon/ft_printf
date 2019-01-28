@@ -6,7 +6,7 @@
 #    By: amerlon- <amerlon-@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/01/27 05:01:06 by amerlon-          #+#    #+#              #
-#    Updated: 2019/01/27 13:10:22 by amerlon-         ###   ########.fr        #
+#    Updated: 2019/01/29 01:54:20 by amerlon-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,7 +35,7 @@ $(LIBFT):
 	@make -C libft
 
 $(NAME): $(LIBFT) $(OBJS)
-	ar rcs $(NAME) $(OBJS) $(LIBFT)
+	ar rcs $(NAME) $(OBJS) $(LIBFT_DIR)/obj/*.o
 	@ranlib $(NAME)
 
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
@@ -56,14 +56,9 @@ norm:
 	@norminette $(SRC_DIR) $(INC_DIR)
 
 test:
-	@sed 's/printf(/ft_printf(/2' test/test.c > test/test_ft.c
-	@gcc -g $(TEST_DIR)/test.c $(NAME) $(LIBFT) -I$(INC_DIR) -I$(LIBFT_H) -o test_output_bin
-	@gcc -g $(TEST_DIR)/test_ft.c $(NAME) $(LIBFT) -I$(INC_DIR) -I$(LIBFT_H) -o test_output_ft_bin
-	@./test_output_bin > test_output
-	@./test_output_ft_bin > test_output_ft
-	@diff -y test_output test_output_ft
+	./test/check.py --path libftprintf.a --header libft/inc/libft.h --file test/test_input.txt
 
-diff:
-	@diff -U 3 test_output test_output_ft
+retest: all test
 
-.PHONY: all clean fclean re norm test diff
+
+.PHONY: all clean fclean re norm test retest
