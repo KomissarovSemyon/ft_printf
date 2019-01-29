@@ -6,3 +6,13 @@
 "char check flags 1%-c", 97
 "char check flags 2%-1c", 97
 "char check flags 3%-10c", 97
+"check string %s", "asd"
+"check double string %s - %s qwe", "asd", "zxc"
+"check char + string %c + %s", 97, "tyu"
+"check width flag %10s", "kek"
+"check width with minus flag %-10s", "kek"
+"check width flag < %10s", "kekaousdbouabs"
+"check width with minus flag < %-10s", "keamsjodboabsdk"
+"check precision %10.2s", "kek"
+"check precision %10.3s", "kek"
+"check precision %10.5s", "kek"

@@ -6,7 +6,7 @@
 /*   By: amerlon- <amerlon-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/27 10:22:52 by amerlon-          #+#    #+#             */
-/*   Updated: 2019/01/29 06:52:00 by amerlon-         ###   ########.fr       */
+/*   Updated: 2019/01/29 08:31:13 by amerlon-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,7 +107,7 @@ int		process_token(const char *f, int *i, va_list ap)
 	if (tok.spec == S_CHAR)
 		return (print_char(va_arg(ap, int), &tok));
 	else if (tok.spec == S_STRING)
-		return (ft_putstr(va_arg(ap, char *)));
+		return (print_string(va_arg(ap, char *), &tok));
 	else if (tok.spec == S_POINTER)
 		return (ft_putstr("pointer kek!"));
 	return (0);

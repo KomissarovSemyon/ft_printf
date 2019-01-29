@@ -6,7 +6,7 @@
 /*   By: amerlon- <amerlon-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/27 06:11:07 by amerlon-          #+#    #+#             */
-/*   Updated: 2019/01/29 06:50:50 by amerlon-         ###   ########.fr       */
+/*   Updated: 2019/01/29 07:56:16 by amerlon-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,9 +67,10 @@ typedef	struct	s_token
 	int			flags;
 }				t_token;
 
-int			ft_printf(const char *f, ...);
-int			process_token(const char *f, int *i,va_list ap);
+int				ft_printf(const char *f, ...);
+int				process_token(const char *f, int *i, va_list ap);
 
-int			print_char(char c, t_token *tok);
+int				print_char(char c, t_token *tok);
+int				print_string(char *s, t_token *tok);
 
 #endif
