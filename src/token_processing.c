@@ -6,7 +6,7 @@
 /*   By: amerlon- <amerlon-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/27 10:22:52 by amerlon-          #+#    #+#             */
-/*   Updated: 2019/01/29 09:05:10 by amerlon-         ###   ########.fr       */
+/*   Updated: 2019/01/29 09:46:01 by amerlon-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 #include "libft.h"
 
 /*
-*	эта функция должна парсить строку и получать токен с шириной, точностью
-*	и доп флагами
+**	эта функция должна парсить строку и получать токен с шириной, точностью
+**	и доп флагами
 */
 
 void	get_spec(const char *f, t_token *tok)
@@ -103,7 +103,6 @@ int		process_token(const char *f, int *i, va_list ap)
 	tok.precision = -1;
 	tok.flags = 0;
 	*i += parse_token(f, &tok) + 1;
-	// printf("|%c - %d - %d - %d|", tok.spec, tok.width, tok.precision, tok.flags);
 	if (tok.spec == S_CHAR)
 		return (print_char(va_arg(ap, int), &tok));
 	else if (tok.spec == S_STRING)

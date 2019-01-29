@@ -6,7 +6,7 @@
 /*   By: amerlon- <amerlon-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/29 07:54:44 by amerlon-          #+#    #+#             */
-/*   Updated: 2019/01/29 08:59:21 by amerlon-         ###   ########.fr       */
+/*   Updated: 2019/01/29 09:49:36 by amerlon-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ static int	print_no_flag(char *str, int w, int p)
 	return (i);
 }
 
-int		print_string(char *s, t_token *tok)
+int			print_string(char *s, t_token *tok)
 {
 	int	i;
 	int	w;
@@ -62,11 +62,14 @@ int		print_string(char *s, t_token *tok)
 	w = tok->width;
 	p = tok->precision;
 	if (!s)
-		return (((tok->flags & F_MINUS) != F_MINUS) ? 
-			print_no_flag("(null)", w, p) : print_with_flag("(null)", w, p));
+	{
+		return (((tok->flags & F_MINUS) != F_MINUS) ?
+			print_no_flag("(null)", w, p) :
+			print_with_flag("(null)", w, p));
+	}
 	i = 0;
 	if ((tok->flags & F_MINUS) != F_MINUS)
-		return(print_no_flag(s, w, p));
+		return (print_no_flag(s, w, p));
 	else
-		return(print_with_flag(s, w, p));
+		return (print_with_flag(s, w, p));
 }

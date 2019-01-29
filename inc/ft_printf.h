@@ -6,7 +6,7 @@
 /*   By: amerlon- <amerlon-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/27 06:11:07 by amerlon-          #+#    #+#             */
-/*   Updated: 2019/01/29 09:04:12 by amerlon-         ###   ########.fr       */
+/*   Updated: 2019/01/29 09:51:29 by amerlon-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 # include <stdio.h> // DELETE THIS
 
 /*
-*	макросы для заменения аски значения спецификатора
+**	макросы для заменения аски значения спецификаторы
 */
 
 # define S_CHAR 'c'
@@ -40,24 +40,24 @@
 # define F_Z (1 << 10)
 
 /*
-*	основная структура хранения токенов
-*	width		-	ширина
-*	precision	-	точность
-*	flags		-	дополнительные флаги:
-*		none	print normally (right justify, space fill)	0
-*		-		left justify								2^0
-*		0		leading zero fill							2^1
-*		+		print plus on positive numbers				2^2
-*		#		multi use									2^3
-*		space	invisible plus sign							2^4
-*		hh		char										2^5
-*		h		short										2^6
-*		l		long										2^7
-*		ll		long long									2^8
-*		j		intmax_t									2^9
-*		z		size_t										2^10
-*	за каждый флаг отвичает свой бит, например если считали с флагами
-* 	- и +, то значени flags=5
+**	основная структура хранения токенов
+**	width		-	ширина
+**	precision	-	точность
+**	flags		-	дополнительные флаги:
+**		none	print normally (right justify, space fill)	0
+**		-		left justify								2^0
+**		0		leading zero fill							2^1
+**		+		print plus on positive numbers				2^2
+**		#		multi use									2^3
+**		space	invisible plus sign							2^4
+**		hh		char										2^5
+**		h		short										2^6
+**		l		long										2^7
+**		ll		long long									2^8
+**		j		intmax_t									2^9
+**		z		size_t										2^10
+**	за каждый флаг отвичает свой бит, например если считали с флагами
+**	- и +, то значени flags=5
 */
 
 typedef	struct	s_token
