@@ -1,3 +1,4 @@
 libftprintf.a
 obj
 *.dSYM
+a.out
