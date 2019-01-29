@@ -6,7 +6,7 @@
 /*   By: amerlon- <amerlon-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/27 10:22:52 by amerlon-          #+#    #+#             */
-/*   Updated: 2019/01/29 05:59:48 by amerlon-         ###   ########.fr       */
+/*   Updated: 2019/01/29 06:52:00 by amerlon-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,19 +101,14 @@ int		process_token(const char *f, int *i, va_list ap)
 
 	tok.width = 0;
 	tok.precision = -1;
-	*i += parse_token(f, &tok);
-	printf("|%c - %d - %d - %d|", tok.spec, tok.width, tok.precision, tok.flags);
+	tok.flags = 0;
+	*i += parse_token(f, &tok) + 1;
+	// printf("|%c - %d - %d - %d|", tok.spec, tok.width, tok.precision, tok.flags);
 	if (tok.spec == S_CHAR)
-		return (ft_putchar(va_arg(ap, int)));
+		return (print_char(va_arg(ap, int), &tok));
 	else if (tok.spec == S_STRING)
 		return (ft_putstr(va_arg(ap, char *)));
 	else if (tok.spec == S_POINTER)
 		return (ft_putstr("pointer kek!"));
 	return (0);
-}
-
-int		skip_token(const char *f)
-{
-	(void)f;
-	return (1);
 }

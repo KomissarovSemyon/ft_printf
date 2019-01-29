@@ -6,13 +6,14 @@
 /*   By: amerlon- <amerlon-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/27 06:11:07 by amerlon-          #+#    #+#             */
-/*   Updated: 2019/01/29 05:54:31 by amerlon-         ###   ########.fr       */
+/*   Updated: 2019/01/29 06:50:50 by amerlon-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FT_PRINTF_H
 # define FT_PRINTF_H
 # include <stdarg.h>
+# include "libft.h"
 
 # include <stdio.h> // DELETE THIS
 
@@ -66,8 +67,9 @@ typedef	struct	s_token
 	int			flags;
 }				t_token;
 
-int		ft_printf(const char *f, ...);
-int		process_token(const char *f, int *i,va_list ap);
-int		skip_token(const char *f);
+int			ft_printf(const char *f, ...);
+int			process_token(const char *f, int *i,va_list ap);
+
+int			print_char(char c, t_token *tok);
 
 #endif

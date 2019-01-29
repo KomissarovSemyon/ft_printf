@@ -1,6 +1,8 @@
 "basic char %cqwe", 97
 "basic multiple chars %c - %cqwe", 97, 97
 "double chars %c%cqwe", 97, 97
-"basic string %sqwe", "asdas"
-"empty string %sqwe", ""
-"NULL string %sqwe", NULL
+"char check flags 2%1c", 97
+"char check flags 3%10c", 97
+"char check flags 1%-c", 97
+"char check flags 2%-1c", 97
+"char check flags 3%-10c", 97

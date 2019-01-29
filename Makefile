@@ -6,7 +6,7 @@
 #    By: amerlon- <amerlon-@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/01/27 05:01:06 by amerlon-          #+#    #+#              #
-#    Updated: 2019/01/29 01:54:20 by amerlon-         ###   ########.fr        #
+#    Updated: 2019/01/29 06:54:48 by amerlon-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,8 +19,9 @@ INC_DIR = ./inc
 OBJ_DIR = ./obj
 TEST_DIR = ./test
 
-SRC = ft_printf.c \
-		token_processing.c
+SRC		=	ft_printf.c \
+			token_processing.c \
+			print_char.c \
 
 OBJS = $(addprefix $(OBJ_DIR)/,$(SRC:%.c=%.o))
 LIBFT = $(LIBFT_DIR)/libft.a
@@ -60,5 +61,8 @@ test:
 
 retest: all test
 
+main:
+	gcc -g main.c libftprintf.a -Ilibft/inc -Iinc && ./a.out
 
-.PHONY: all clean fclean re norm test retest
+
+.PHONY: all clean fclean re norm test retest main
