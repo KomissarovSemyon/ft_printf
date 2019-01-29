@@ -6,7 +6,7 @@
 #    By: amerlon- <amerlon-@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/01/27 05:01:06 by amerlon-          #+#    #+#              #
-#    Updated: 2019/01/29 07:56:40 by amerlon-         ###   ########.fr        #
+#    Updated: 2019/01/29 09:10:46 by amerlon-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,7 +28,7 @@ OBJS = $(addprefix $(OBJ_DIR)/,$(SRC:%.c=%.o))
 LIBFT = $(LIBFT_DIR)/libft.a
 LIBFT_H = $(LIBFT_DIR)/inc
 
-all: $(OBJ_DIR) $(NAME)
+all: $(NAME)
 
 $(OBJ_DIR):
 	@mkdir -p $(OBJ_DIR)
@@ -36,7 +36,7 @@ $(OBJ_DIR):
 $(LIBFT):
 	@make -C libft
 
-$(NAME): $(LIBFT) $(OBJS)
+$(NAME): $(OBJ_DIR) $(LIBFT) $(OBJS)
 	ar rcs $(NAME) $(OBJS) $(LIBFT_DIR)/obj/*.o
 	@ranlib $(NAME)
 

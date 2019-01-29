@@ -6,7 +6,7 @@
 /*   By: amerlon- <amerlon-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/27 06:11:07 by amerlon-          #+#    #+#             */
-/*   Updated: 2019/01/29 07:56:16 by amerlon-         ###   ########.fr       */
+/*   Updated: 2019/01/29 09:04:12 by amerlon-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@
 # define S_CHAR 'c'
 # define S_STRING 's'
 # define S_POINTER 'p'
+# define S_PERCENT '%'
 
 # define F_MINUS (1 << 0)
 # define F_ZERO (1 << 1)
