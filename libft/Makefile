@@ -6,7 +6,7 @@
 #    By: amerlon- <amerlon-@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/21 20:02:14 by amerlon-          #+#    #+#              #
-#    Updated: 2019/01/30 16:53:00 by amerlon-         ###   ########.fr        #
+#    Updated: 2019/01/30 21:36:08 by amerlon-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -90,7 +90,8 @@ SRC = ft_strlen.c \
 		get_next_line.c \
 		ft_strnchr.c \
 		ft_abs.c \
-		ft_nbrlen_base.c
+		ft_nbrlen_base.c \
+		ft_ltoa_base.c
 OBJS = $(addprefix $(OBJ_DIR)/,$(SRC:%.c=%.o))
 
 all: $(OBJ_DIR) $(NAME)
@@ -105,7 +106,7 @@ $(NAME): $(OBJS)
 	@echo "\033[34mIndexing library\033[0m"
 
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
-	gcc -Wall -Werror -Wextra -c $< -I$(INC_DIR) -o $@
+	gcc -g -Wall -Werror -Wextra -c $< -I$(INC_DIR) -o $@
 
 clean:
 	@rm -rf $(OBJ_DIR)

@@ -6,11 +6,11 @@
 /*   By: amerlon- <amerlon-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/26 20:53:49 by amerlon-          #+#    #+#             */
-/*   Updated: 2019/01/27 04:08:45 by amerlon-         ###   ########.fr       */
+/*   Updated: 2019/01/30 21:56:38 by amerlon-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_abs(int a)
+long long int	ft_abs(long long int a)
 {
 	return (a > 0 ? a : -a);
 }

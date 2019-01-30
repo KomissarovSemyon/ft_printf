@@ -6,7 +6,7 @@
 /*   By: amerlon- <amerlon-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/21 23:21:11 by amerlon-          #+#    #+#             */
-/*   Updated: 2019/01/30 16:58:31 by amerlon-         ###   ########.fr       */
+/*   Updated: 2019/01/30 21:56:49 by amerlon-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,7 +122,8 @@ char				*ft_copyuntil(char *str, int c);
 char				*ft_strchr_safe(const char *s, int c);
 char				*ft_strdup_safe(const char *s1);
 int					ft_strnchr(const char *s, char ch, int n);
-int					ft_abs(int a);
+long long int		ft_abs(long long int a);
+char				*ft_ltoa_base(long long int n, int base);
 int					ft_nbrlen_base(unsigned long long int nbr, int base);
 
 # define BUFF_SIZE 32
