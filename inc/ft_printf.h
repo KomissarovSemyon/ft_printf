@@ -6,7 +6,7 @@
 /*   By: amerlon- <amerlon-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/27 06:11:07 by amerlon-          #+#    #+#             */
-/*   Updated: 2019/01/30 22:10:16 by amerlon-         ###   ########.fr       */
+/*   Updated: 2019/01/30 22:38:52 by amerlon-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +75,6 @@ int				process_token(const char *f, int *i, va_list ap);
 int				print_char(char c, t_token *tok);
 int				print_string(char *s, t_token *tok);
 int				print_pointer(unsigned long long int n, t_token *tok);
-int				print_number(long long int n, t_token *tok);
+int				print_decimal(long long int n, t_token *tok);
 
 #endif
