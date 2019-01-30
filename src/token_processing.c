@@ -6,30 +6,12 @@
 /*   By: amerlon- <amerlon-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/27 10:22:52 by amerlon-          #+#    #+#             */
-/*   Updated: 2019/01/29 09:46:01 by amerlon-         ###   ########.fr       */
+/*   Updated: 2019/01/30 15:18:16 by amerlon-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 #include "libft.h"
-
-/*
-**	эта функция должна парсить строку и получать токен с шириной, точностью
-**	и доп флагами
-*/
-
-void	get_spec(const char *f, t_token *tok)
-{
-	int i;
-
-	i = 0;
-	if (f[i] == S_CHAR)
-		tok->spec = S_CHAR;
-	else if (f[i] == S_STRING)
-		tok->spec = S_STRING;
-	else if (f[i] == S_POINTER)
-		tok->spec = S_POINTER;
-}
 
 int		begin_flag(char c)
 {
