@@ -6,7 +6,7 @@
 /*   By: amerlon- <amerlon-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/21 23:21:11 by amerlon-          #+#    #+#             */
-/*   Updated: 2019/01/29 01:55:31 by amerlon-         ###   ########.fr       */
+/*   Updated: 2019/01/30 16:58:31 by amerlon-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,7 +109,7 @@ int					ft_printf(const char *f, ...);
 */
 
 int					ft_iswhitespace(int c);
-int					ft_nbrlen(int c);
+int					ft_nbrlen(unsigned long long int nbr);
 int					ft_wordcount(const char *str, char del);
 char				*ft_nextword(char const *s, char c);
 char				*ft_strndup(const char *s1, size_t n);
@@ -123,6 +123,7 @@ char				*ft_strchr_safe(const char *s, int c);
 char				*ft_strdup_safe(const char *s1);
 int					ft_strnchr(const char *s, char ch, int n);
 int					ft_abs(int a);
+int					ft_nbrlen_base(unsigned long long int nbr, int base);
 
 # define BUFF_SIZE 32
 
