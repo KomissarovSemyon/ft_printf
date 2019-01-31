@@ -6,7 +6,7 @@
 /*   By: amerlon- <amerlon-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/27 06:09:26 by amerlon-          #+#    #+#             */
-/*   Updated: 2019/01/29 05:51:57 by amerlon-         ###   ########.fr       */
+/*   Updated: 2019/01/31 12:28:44 by amerlon-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,11 @@ int		ft_printf(const char *f, ...)
 		if (f[i] == '%')
 			res += process_token(f + i + 1, &i, ap);
 		else
-			res += ft_putchar(f[i]);
+		{
+			k = ft_putstr_until((char *)f + i, '%') - 1;
+			res += k;
+			i += k;
+		}
 	}
 	va_end(ap);
 	return (res);

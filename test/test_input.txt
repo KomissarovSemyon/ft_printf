@@ -16,3 +16,8 @@
 "check precision %10.2s", "kek"
 "check precision %10.3s", "kek"
 "check precision %10.5s", "kek"
+"check decimal no print flags %d", 123125
+"check decimal no print flags %hhd", 123125
+"check decimal no print flags %hd", 123125
+"check decimal no print flags %ld", 123125
+"check decimal no print flags %lld", 123125

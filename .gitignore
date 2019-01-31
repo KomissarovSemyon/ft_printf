@@ -2,3 +2,4 @@ libftprintf.a
 obj
 *.dSYM
 a.out
+main.c
