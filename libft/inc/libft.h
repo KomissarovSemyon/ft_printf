@@ -6,7 +6,7 @@
 /*   By: amerlon- <amerlon-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/21 23:21:11 by amerlon-          #+#    #+#             */
-/*   Updated: 2019/01/30 22:51:56 by amerlon-         ###   ########.fr       */
+/*   Updated: 2019/01/31 18:14:08 by amerlon-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -126,6 +126,8 @@ long long int		ft_abs(long long int a);
 char				*ft_ltoa_base(long long int n, int base);
 int					ft_putstr_until(char *s, char c);
 int					ft_nbrlen_base(unsigned long long int nbr, int base);
+char				*ft_chjoinstr(char c, char *str);
+
 
 # define BUFF_SIZE 32
 
