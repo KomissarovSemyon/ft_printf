@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print_number.c                                     :+:      :+:    :+:   */
+/*   print_decimal.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: amerlon- <amerlon-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/30 22:10:07 by amerlon-          #+#    #+#             */
-/*   Updated: 2019/01/30 22:38:48 by amerlon-         ###   ########.fr       */
+/*   Updated: 2019/01/31 21:59:13 by amerlon-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,5 +26,6 @@ int	print_decimal(long long int n, t_token *tok)
 		str = ft_ltoa_base((long long)n, 10);
 	else
 		str = ft_ltoa_base((int)n, 10);
-	return (ft_putstr(str));
+	// return (ft_putstr(str));
+	return (print_number(str, tok, n >= 0));
 }

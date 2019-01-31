@@ -1,23 +1,47 @@
-"basic char %cqwe", 97
-"basic multiple chars %c - %cqwe", 97, 97
-"double chars %c%cqwe", 97, 97
-"char check flags 2%1c", 97
-"char check flags 3%10c", 97
-"char check flags 1%-c", 97
-"char check flags 2%-1c", 97
-"char check flags 3%-10c", 97
-"check string %s", "asd"
-"check double string %s - %s qwe", "asd", "zxc"
-"check char + string %c + %s", 97, "tyu"
-"check width flag %10s", "kek"
-"check width with minus flag %-10s", "kek"
-"check width flag < %10s", "kekaousdbouabs"
-"check width with minus flag < %-10s", "keamsjodboabsdk"
-"check precision %10.2s", "kek"
-"check precision %10.3s", "kek"
-"check precision %10.5s", "kek"
-"check decimal no print flags %d", 123125
-"check decimal no print flags %hhd", 123125
-"check decimal no print flags %hd", 123125
-"check decimal no print flags %ld", 123125
-"check decimal no print flags %lld", 123125
+"%cqwe", 97
+"%c - %cqwe", 97, 97
+"%cqwe", 97, 97
+"%1c", 97
+"%10c", 97
+"%-c", 97
+"%-1c", 97
+"%-10c", 97
+"%s", "asd"
+"%s - %s", "asd", "zxc"
+"%c + %s", 97, "tyu"
+"%10s", "kek"
+"%-10s", "kek"
+"%10s", "kekaousdbouabs"
+"%-10s", "keamsjodboabsdk"
+"%10.2s", "kek"
+"%10.3s", "kek"
+"%10.5s", "kek"
+"%d", 123125
+"%hhd", 123125
+"%hd", 123125
+"%ld", 123125
+"%lld", 123125
+"% d", 123125
+"%+d", 123125
+"%010d", 123125
+"%-10d", 123125
+"%-+10d", 123125
+"% -10d", 123125
+"% 010d", 123125
+"%+010d", 123125
+"% d", 12
+"%+d", 12
+"%010d", 12
+"%-10d", 12
+"%-+10d", 12
+"% -10d", 12
+"% 010d", 12
+"%+010d", 12
+"% d", -123125
+"%+d", -123125
+"%010d", -123125
+"%-10d", -123125
+"%-+10d", -123125
+"% -10d", -123125
+"% 010d", -123125
+"%+010d", -123125
