@@ -6,7 +6,7 @@
 #    By: amerlon- <amerlon-@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/21 20:02:14 by amerlon-          #+#    #+#              #
-#    Updated: 2019/01/30 21:36:08 by amerlon-         ###   ########.fr        #
+#    Updated: 2019/01/30 22:52:04 by amerlon-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -91,7 +91,8 @@ SRC = ft_strlen.c \
 		ft_strnchr.c \
 		ft_abs.c \
 		ft_nbrlen_base.c \
-		ft_ltoa_base.c
+		ft_ltoa_base.c \
+		ft_putstr_until.c
 OBJS = $(addprefix $(OBJ_DIR)/,$(SRC:%.c=%.o))
 
 all: $(OBJ_DIR) $(NAME)
