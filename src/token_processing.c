@@ -6,7 +6,7 @@
 /*   By: amerlon- <amerlon-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/27 10:22:52 by amerlon-          #+#    #+#             */
-/*   Updated: 2019/01/31 22:01:21 by amerlon-         ###   ########.fr       */
+/*   Updated: 2019/02/02 14:13:33 by amerlon-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,6 +94,6 @@ int		process_token(const char *f, int *i, va_list ap)
 	else if (tok.spec == S_PERCENT)
 		return (print_char('%', &tok));
 	else if (tok.spec == S_DECIMAL)
-		return (print_decimal(va_arg(ap, long long), &tok));
+		return (print_decimal(va_arg(ap, long long int), &tok));
 	return (0);
 }

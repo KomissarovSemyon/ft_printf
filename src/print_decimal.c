@@ -6,7 +6,7 @@
 /*   By: amerlon- <amerlon-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/30 22:10:07 by amerlon-          #+#    #+#             */
-/*   Updated: 2019/01/31 21:59:13 by amerlon-         ###   ########.fr       */
+/*   Updated: 2019/02/02 14:39:31 by amerlon-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,5 +27,5 @@ int	print_decimal(long long int n, t_token *tok)
 	else
 		str = ft_ltoa_base((int)n, 10);
 	// return (ft_putstr(str));
-	return (print_number(str, tok, n >= 0));
+	return (print_number(str, tok, str[0] != '-'));
 }
