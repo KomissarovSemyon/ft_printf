@@ -6,7 +6,7 @@
 /*   By: amerlon- <amerlon-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/03 17:10:23 by amerlon-          #+#    #+#             */
-/*   Updated: 2019/02/04 00:57:07 by amerlon-         ###   ########.fr       */
+/*   Updated: 2019/02/04 01:05:51 by amerlon-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,16 +18,15 @@ int	print_octal(unsigned int n, t_token *tok)
 	char	*temp;
 	int		res;
 
-	str = ft_ltoa_base(n, 8);
 	tok->flags = tok->flags & (~F_PLUS);
-	if (!str)
+	if (!(str = ft_ltoa_base(n, 8)))
 		return (0);
 	if ((tok->flags & F_SHARP) == F_SHARP)
 	{
 		if (tok->precision == 0 && n == 0)
 		{
 			tok->precision = -1;
-			res = print_number("0", tok, 0);
+			res = print_number("0", tok, 1);
 		}
 		else
 		{
