@@ -6,7 +6,7 @@
 /*   By: amerlon- <amerlon-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/27 06:11:07 by amerlon-          #+#    #+#             */
-/*   Updated: 2019/01/31 15:18:47 by amerlon-         ###   ########.fr       */
+/*   Updated: 2019/02/03 18:50:47 by amerlon-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@
 # define S_POINTER 'p'
 # define S_PERCENT '%'
 # define S_DECIMAL 'd'
+# define S_OCTAL 'o'
 
 # define F_MINUS (1 << 0)
 # define F_ZERO (1 << 1)
@@ -79,5 +80,6 @@ int				print_with_flag(char *str, int w, int p, char c);
 int				print_pointer(unsigned long long int n, t_token *tok);
 int				print_decimal(long long int n, t_token *tok);
 int				print_number(char *str, t_token *tok, int sign);
+int				print_octal(unsigned int n, t_token *tok);
 
 #endif
