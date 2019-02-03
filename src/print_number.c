@@ -6,7 +6,7 @@
 /*   By: amerlon- <amerlon-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/31 12:39:33 by amerlon-          #+#    #+#             */
-/*   Updated: 2019/02/03 15:50:27 by amerlon-         ###   ########.fr       */
+/*   Updated: 2019/02/03 16:34:19 by amerlon-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,7 +98,7 @@ static int	print_negative_with_prec(char *str, t_token *tok)
 	return (res);
 }
 
-int		print_number(char *str, t_token *tok, int sign)
+int			print_number(char *str, t_token *tok, int sign)
 {
 	if (sign && tok->precision == -1)
 		return (print_positive(str, tok));
