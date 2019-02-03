@@ -6,7 +6,7 @@
 /*   By: amerlon- <amerlon-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/30 22:10:07 by amerlon-          #+#    #+#             */
-/*   Updated: 2019/02/03 13:21:58 by amerlon-         ###   ########.fr       */
+/*   Updated: 2019/02/03 14:07:19 by amerlon-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 int	print_decimal(long long int n, t_token *tok)
 {
 	char	*str;
+	int		d;
 
 	if ((tok->flags & F_HH) == F_HH)
 		str = ft_ltoa_base((char)n, 10);
@@ -30,6 +31,7 @@ int	print_decimal(long long int n, t_token *tok)
 		str = ft_ltoa_base((size_t)n, 10);
 	else
 		str = ft_ltoa_base((int)n, 10);
-	// return (ft_putstr(str));
-	return (print_number(str, tok, str[0] != '-'));
+	d = print_number(str, tok, str[0] != '-');
+	free(str);
+	return (d);
 }

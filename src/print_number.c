@@ -6,7 +6,7 @@
 /*   By: amerlon- <amerlon-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/31 12:39:33 by amerlon-          #+#    #+#             */
-/*   Updated: 2019/01/31 20:27:44 by amerlon-         ###   ########.fr       */
+/*   Updated: 2019/02/03 15:50:27 by amerlon-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,24 @@ static int	print_positive(char *str, t_token *tok)
 	return (res);
 }
 
+static int	print_positive_with_prec(char *str, t_token *tok)
+{
+	int		l;
+	int		res;
+	char	*temp;
+
+	if (str[0] == '0' && tok->precision == 0)
+		return (print_positive("", tok));
+	tok->flags = tok->flags & (~F_ZERO);
+	l = ft_strlen(str);
+	if (tok->precision <= l)
+		return (print_positive(str, tok));
+	temp = ft_nchjoinstr(str, '0', tok->precision - l);
+	res = print_positive(temp, tok);
+	free(temp);
+	return (res);
+}
+
 static int	print_negative(char *str, t_token *tok)
 {
 	int		res;
@@ -61,9 +79,32 @@ static int	print_negative(char *str, t_token *tok)
 	return (res);
 }
 
+static int	print_negative_with_prec(char *str, t_token *tok)
+{
+	int		l;
+	int		res;
+	char	*temp;
+	char	*temp1;
+
+	tok->flags = tok->flags & (~F_ZERO);
+	l = ft_strlen(str) - 1;
+	if (tok->precision <= l)
+		return (print_negative(str, tok));
+	temp = ft_nchjoinstr(str + 1, '0', tok->precision - l);
+	temp1 = ft_chjoinstr('-', temp);
+	res = print_negative(temp1, tok);
+	free(temp);
+	free(temp1);
+	return (res);
+}
+
 int		print_number(char *str, t_token *tok, int sign)
 {
-	if (sign)
+	if (sign && tok->precision == -1)
 		return (print_positive(str, tok));
+	if (sign && tok->precision != -1)
+		return (print_positive_with_prec(str, tok));
+	if (!sign && tok->precision != -1)
+		return (print_negative_with_prec(str, tok));
 	return (print_negative(str, tok));
 }

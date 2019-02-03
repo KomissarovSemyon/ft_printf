@@ -6,7 +6,7 @@
 /*   By: amerlon- <amerlon-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/27 10:22:52 by amerlon-          #+#    #+#             */
-/*   Updated: 2019/02/02 14:13:33 by amerlon-         ###   ########.fr       */
+/*   Updated: 2019/02/03 15:41:19 by amerlon-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,8 @@ int		parse_token(const char *f, t_token *tok)
 		while (ft_isdigit(f[++i]))
 			tok->precision == -1 ? (tok->precision = f[i] - '0') :
 				(tok->precision = tok->precision * 10 + f[i] - '0');
+	if (f[i - 1] == '.' && tok->precision == -1)
+		tok->precision = 0;
 	if ((flag = length_flag(f, &i)))
 		tok->flags = tok->flags | flag;
 	tok->spec = f[i];
