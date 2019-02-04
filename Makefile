@@ -6,7 +6,7 @@
 #    By: amerlon- <amerlon-@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/01/27 05:01:06 by amerlon-          #+#    #+#              #
-#    Updated: 2019/02/04 03:36:32 by amerlon-         ###   ########.fr        #
+#    Updated: 2019/02/04 20:39:49 by amerlon-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -62,11 +62,8 @@ norm:
 	@make -C libft norm
 	@norminette $(SRC_DIR) $(INC_DIR)
 
-test1:
-	./test/check.py --path libftprintf.a --header libft/inc/libft.h --file test/test_input1.txt
-
-test2:
-	./test/check.py --path libftprintf.a --header libft/inc/libft.h --file test/test_input2.txt
+test:
+	./test/check.py --path libftprintf.a --header libft/inc/libft.h --file test/test_input.txt
 
 retest: all test
 

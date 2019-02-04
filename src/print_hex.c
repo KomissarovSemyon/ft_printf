@@ -6,7 +6,7 @@
 /*   By: amerlon- <amerlon-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/04 02:10:49 by amerlon-          #+#    #+#             */
-/*   Updated: 2019/02/04 03:47:18 by amerlon-         ###   ########.fr       */
+/*   Updated: 2019/02/04 22:31:00 by amerlon-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,28 +50,50 @@ static size_t	cast_to_flag(size_t n, t_token *tok)
 	return ((unsigned int)n);
 }
 
+static void		parse_if(size_t n, t_token *tok, char **str)
+{
+	char	*temp;
+	int		l;
+
+	l = ft_strlen(*str);
+	if (tok->precision > l)
+	{
+		temp = ft_nchjoinstr(*str, '0', tok->precision - l);
+		free(*str);
+		*str = temp;
+		tok->flags = tok->flags & (~F_ZERO);
+	}
+	if ((tok->flags & F_ZERO) == F_ZERO && tok->precision == -1 && n != 0 &&
+		(tok->flags & F_MINUS) != F_MINUS)
+	{
+		temp = ft_nchjoinstr(*str, '0', tok->width - l -
+			((tok->flags & F_SHARP) == F_SHARP) * 2);
+		free(*str);
+		*str = temp;
+	}
+	if ((tok->flags & F_SHARP) == F_SHARP && n != 0)
+	{
+		temp = ft_strjoin("0x", *str);
+		free(*str);
+		*str = temp;
+		tok->flags = tok->flags & (~F_ZERO);
+	}
+}
+
 int	print_hex(size_t n, t_token *tok)
 {
 	char	*str;
-	char	*temp;
 	int		res;
 
 	tok->flags = tok->flags & (~F_PLUS);
+	tok->flags = tok->flags & (~F_SPACE);
+	if (n == 0 && tok->precision == 0)
+		return (print_number("", tok, 1));
 	if (!(str = ft_ltoa_sizet_hex(cast_to_flag(n, tok))))
 		return (0);
-	if ((tok->flags & F_SHARP) == F_SHARP)
-	{
-		if (n == 0)
-			res = print_number("0", tok, 1);
-		else
-		{
-			temp = ft_strjoin("0x", str);
-			res = print_number(temp, tok, 1);
-			free(temp);
-		}
-	}
-	else
-		res = print_number(str, tok, 1);
+	parse_if(n, tok, &str);
+	tok->precision = -1;
+	res = print_number(str, tok, 1);
 	free(str);
 	return (res);
 }
