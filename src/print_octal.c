@@ -6,18 +6,18 @@
 /*   By: amerlon- <amerlon-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/03 17:10:23 by amerlon-          #+#    #+#             */
-/*   Updated: 2019/02/04 03:22:25 by amerlon-         ###   ########.fr       */
+/*   Updated: 2019/02/05 02:28:06 by amerlon-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static char	*ft_ltoa_sizet_octal(size_t n)
+static char		*ft_ltoa_sizet_octal(size_t n)
 {
-	char			*hex;
-	int				i;
-	int				l;
-	char			*res;
+	char	*hex;
+	int		i;
+	int		l;
+	char	*res;
 
 	if (n == 0)
 		return (ft_strdup("0"));

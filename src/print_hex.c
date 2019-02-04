@@ -6,13 +6,13 @@
 /*   By: amerlon- <amerlon-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/04 02:10:49 by amerlon-          #+#    #+#             */
-/*   Updated: 2019/02/04 22:31:00 by amerlon-         ###   ########.fr       */
+/*   Updated: 2019/02/05 02:31:32 by amerlon-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static char	*ft_ltoa_sizet_hex(size_t n)
+static char		*ft_ltoa_sizet_hex(size_t n)
 {
 	char			*hex;
 	int				i;
@@ -50,12 +50,10 @@ static size_t	cast_to_flag(size_t n, t_token *tok)
 	return ((unsigned int)n);
 }
 
-static void		parse_if(size_t n, t_token *tok, char **str)
+static void		parse_if(size_t n, t_token *tok, char **str, int l)
 {
 	char	*temp;
-	int		l;
 
-	l = ft_strlen(*str);
 	if (tok->precision > l)
 	{
 		temp = ft_nchjoinstr(*str, '0', tok->precision - l);
@@ -80,7 +78,7 @@ static void		parse_if(size_t n, t_token *tok, char **str)
 	}
 }
 
-int	print_hex(size_t n, t_token *tok)
+int				print_hex(size_t n, t_token *tok)
 {
 	char	*str;
 	int		res;
@@ -91,7 +89,7 @@ int	print_hex(size_t n, t_token *tok)
 		return (print_number("", tok, 1));
 	if (!(str = ft_ltoa_sizet_hex(cast_to_flag(n, tok))))
 		return (0);
-	parse_if(n, tok, &str);
+	parse_if(n, tok, &str, ft_strlen(str));
 	tok->precision = -1;
 	res = print_number(str, tok, 1);
 	free(str);

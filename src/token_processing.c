@@ -6,7 +6,7 @@
 /*   By: amerlon- <amerlon-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/27 10:22:52 by amerlon-          #+#    #+#             */
-/*   Updated: 2019/02/05 02:05:15 by amerlon-         ###   ########.fr       */
+/*   Updated: 2019/02/05 02:16:31 by amerlon-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,5 +105,7 @@ int		process_token(const char *f, int *i, va_list ap)
 		return (print_bhex(va_arg(ap, size_t), &tok));
 	else if (tok.spec == S_UNSIGNED)
 		return (print_unsigned(va_arg(ap, unsigned long long int), &tok));
+	else if (tok.spec == S_UNSIGNEDL)
+		return (print_unsignedl(va_arg(ap, unsigned long long int), &tok));
 	return (0);
 }
