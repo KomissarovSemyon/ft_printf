@@ -6,7 +6,7 @@
 /*   By: amerlon- <amerlon-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/27 06:11:07 by amerlon-          #+#    #+#             */
-/*   Updated: 2019/02/05 01:17:03 by amerlon-         ###   ########.fr       */
+/*   Updated: 2019/02/05 02:05:00 by amerlon-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@
 # define S_OCTAL 'o'
 # define S_HEX 'x'
 # define S_BHEX 'X'
+# define S_UNSIGNED 'u'
 
 # define F_MINUS (1 << 0)
 # define F_ZERO (1 << 1)
@@ -85,5 +86,6 @@ int				print_number(char *str, t_token *tok, int sign);
 int				print_octal(size_t n, t_token *tok);
 int				print_hex(size_t n, t_token *tok);
 int				print_bhex(size_t n, t_token *tok);
+int				print_unsigned(unsigned long long int n, t_token *tok);
 
 #endif
