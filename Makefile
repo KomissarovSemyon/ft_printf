@@ -6,7 +6,7 @@
 #    By: amerlon- <amerlon-@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/01/27 05:01:06 by amerlon-          #+#    #+#              #
-#    Updated: 2019/02/03 17:23:11 by amerlon-         ###   ########.fr        #
+#    Updated: 2019/02/04 03:36:32 by amerlon-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,7 +26,8 @@ SRC		=	ft_printf.c \
 			print_pointer.c \
 			print_decimal.c \
 			print_number.c \
-			print_octal.c
+			print_octal.c \
+			print_hex.c
 
 OBJS = $(addprefix $(OBJ_DIR)/,$(SRC:%.c=%.o))
 LIBFT = $(LIBFT_DIR)/libft.a
@@ -61,8 +62,11 @@ norm:
 	@make -C libft norm
 	@norminette $(SRC_DIR) $(INC_DIR)
 
-test:
-	./test/check.py --path libftprintf.a --header libft/inc/libft.h --file test/test_input.txt
+test1:
+	./test/check.py --path libftprintf.a --header libft/inc/libft.h --file test/test_input1.txt
+
+test2:
+	./test/check.py --path libftprintf.a --header libft/inc/libft.h --file test/test_input2.txt
 
 retest: all test
 
