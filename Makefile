@@ -6,7 +6,7 @@
 #    By: amerlon- <amerlon-@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/01/27 05:01:06 by amerlon-          #+#    #+#              #
-#    Updated: 2019/02/04 20:39:49 by amerlon-         ###   ########.fr        #
+#    Updated: 2019/02/05 01:16:19 by amerlon-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,7 +27,8 @@ SRC		=	ft_printf.c \
 			print_decimal.c \
 			print_number.c \
 			print_octal.c \
-			print_hex.c
+			print_hex.c \
+			print_bhex.c
 
 OBJS = $(addprefix $(OBJ_DIR)/,$(SRC:%.c=%.o))
 LIBFT = $(LIBFT_DIR)/libft.a
