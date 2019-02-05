@@ -6,7 +6,7 @@
 /*   By: amerlon- <amerlon-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/30 17:00:02 by amerlon-          #+#    #+#             */
-/*   Updated: 2019/01/30 18:35:31 by amerlon-         ###   ########.fr       */
+/*   Updated: 2019/02/05 10:24:21 by amerlon-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,24 +14,29 @@
 
 int	print_pointer(unsigned long long int n, t_token *tok)
 {
-	int		i;
-	int		res;
-	char	*str;
-	char	*hex;
+	char	*temp1;
+	char	*temp2;
+	int		l;
 
-	hex = "0123456789abcdef";
-	res = ft_nbrlen_base(n, 16) + 1;
-	str = ft_strnew(res + 2);
-	str[0] = '0';
-	str[1] = 'x';
-	i = res;
-	while (i > 1)
+	tok->flags = tok->flags | F_SHARP;
+	if (tok->precision == -1)
+		l = 1;
+	else if (tok->precision == 0)
+		l = 0;
+	else
+		l = tok->precision;
+	if (n == 0)
 	{
-		str[i] = hex[n % 16];
-		n /= 16;
-		i--;
+		tok->flags = tok->flags & (~F_PLUS);
+		tok->flags = tok->flags & (~F_SPACE);
+		tok->precision = -1;
+		temp1 = ft_nchjoinstr("", '0', l);
+		temp2 = ft_strjoin("0x", temp1);
+		free(temp1);
+		l = print_number(temp2, tok, 1);
+		free(temp2);
+		return (l);
 	}
-	res = print_string(str, tok);
-	ft_strdel(&str);
-	return (res);
+	tok->flags = tok->flags | F_LL;
+	return (print_hex(n, tok));
 }

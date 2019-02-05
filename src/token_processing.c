@@ -6,14 +6,14 @@
 /*   By: amerlon- <amerlon-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/27 10:22:52 by amerlon-          #+#    #+#             */
-/*   Updated: 2019/02/05 02:16:31 by amerlon-         ###   ########.fr       */
+/*   Updated: 2019/02/05 04:46:24 by amerlon-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 #include "libft.h"
 
-int		begin_flag(char c)
+int			begin_flag(char c)
 {
 	if (c == '-')
 		return (F_MINUS);
@@ -28,7 +28,7 @@ int		begin_flag(char c)
 	return (0);
 }
 
-int		length_flag(const char *f, int *i)
+int			length_flag(const char *f, int *i)
 {
 	if ((f[*i] == 'h' && f[*i + 1] == 'h') ||
 		(f[*i] == 'l' && f[*i + 1] == 'l'))
@@ -51,24 +51,24 @@ int		length_flag(const char *f, int *i)
 	return (0);
 }
 
-int		parse_token(const char *f, t_token *tok)
+int			parse_token(const char *f, t_token *tok)
 {
 	int	i;
 	int	flag;
 
 	i = 0;
-	while ((flag = begin_flag(f[i])))
+	while (f[i] && (flag = begin_flag(f[i])))
 	{
 		tok->flags = tok->flags | flag;
 		i++;
 	}
-	while (ft_isdigit(f[i]))
+	while (f[i] && ft_isdigit(f[i]))
 	{
 		tok->width = tok->width * 10 + f[i] - '0';
 		i++;
 	}
 	if (f[i] == '.')
-		while (ft_isdigit(f[++i]))
+		while (f[++i] && ft_isdigit(f[i]))
 			tok->precision == -1 ? (tok->precision = f[i] - '0') :
 				(tok->precision = tok->precision * 10 + f[i] - '0');
 	if (f[i - 1] == '.' && tok->precision == -1)
@@ -79,7 +79,18 @@ int		parse_token(const char *f, t_token *tok)
 	return (i);
 }
 
-int		process_token(const char *f, int *i, va_list ap)
+static int	process_token2(va_list ap, t_token *tok)
+{
+	if (tok->spec == S_BHEX)
+		return (print_bhex(va_arg(ap, size_t), tok));
+	else if (tok->spec == S_UNSIGNED)
+		return (print_unsigned(va_arg(ap, unsigned long long int), tok));
+	else if (tok->spec == S_UNSIGNEDL)
+		return (print_unsignedl(va_arg(ap, unsigned long long int), tok));
+	return (0);
+}
+
+int			process_token(const char *f, int *i, va_list ap)
 {
 	t_token	tok;
 
@@ -101,11 +112,5 @@ int		process_token(const char *f, int *i, va_list ap)
 		return (print_octal(va_arg(ap, unsigned int), &tok));
 	else if (tok.spec == S_HEX)
 		return (print_hex(va_arg(ap, size_t), &tok));
-	else if (tok.spec == S_BHEX)
-		return (print_bhex(va_arg(ap, size_t), &tok));
-	else if (tok.spec == S_UNSIGNED)
-		return (print_unsigned(va_arg(ap, unsigned long long int), &tok));
-	else if (tok.spec == S_UNSIGNEDL)
-		return (print_unsignedl(va_arg(ap, unsigned long long int), &tok));
-	return (0);
+	return (process_token2(ap, &tok));
 }
