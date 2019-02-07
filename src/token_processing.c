@@ -6,7 +6,7 @@
 /*   By: amerlon- <amerlon-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/27 10:22:52 by amerlon-          #+#    #+#             */
-/*   Updated: 2019/02/05 04:46:24 by amerlon-         ###   ########.fr       */
+/*   Updated: 2019/02/07 03:40:11 by amerlon-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,8 @@ int			length_flag(const char *f, int *i)
 		*i += 2;
 		return (f[*i - 1] == 'h' ? F_HH : F_LL);
 	}
-	else if (f[*i] == 'h' || f[*i] == 'l' || f[*i] == 'j' || f[*i] == 'z')
+	else if (f[*i] == 'h' || f[*i] == 'l' || f[*i] == 'j' || f[*i] == 'z' ||
+		f[*i] == 'L')
 	{
 		*i += 1;
 		if (f[*i - 1] == 'h')
@@ -47,6 +48,8 @@ int			length_flag(const char *f, int *i)
 			return (F_J);
 		if (f[*i - 1] == 'z')
 			return (F_Z);
+		if (f[*i - 1] == 'L')
+			return (F_BL);
 	}
 	return (0);
 }
@@ -87,6 +90,8 @@ static int	process_token2(va_list ap, t_token *tok)
 		return (print_unsigned(va_arg(ap, unsigned long long int), tok));
 	else if (tok->spec == S_UNSIGNEDL)
 		return (print_unsignedl(va_arg(ap, unsigned long long int), tok));
+	else if (tok->spec == S_FLOAT)
+		return (print_unsignedl(va_arg(ap, long double), tok));
 	return (0);
 }
 

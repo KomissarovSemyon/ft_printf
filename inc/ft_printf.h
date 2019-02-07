@@ -6,7 +6,7 @@
 /*   By: amerlon- <amerlon-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/27 06:11:07 by amerlon-          #+#    #+#             */
-/*   Updated: 2019/02/05 02:16:30 by amerlon-         ###   ########.fr       */
+/*   Updated: 2019/02/07 03:39:54 by amerlon-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@
 # define S_BHEX 'X'
 # define S_UNSIGNED 'u'
 # define S_UNSIGNEDL 'U'
+# define S_FLOAT 'f'
 
 # define F_MINUS (1 << 0)
 # define F_ZERO (1 << 1)
@@ -44,6 +45,7 @@
 # define F_LL (1 << 8)
 # define F_J (1 << 9)
 # define F_Z (1 << 10)
+# define F_BL (1 << 11)
 
 /*
 **	основная структура хранения токенов
@@ -62,6 +64,7 @@
 **		ll		long long									2^8
 **		j		intmax_t									2^9
 **		z		size_t										2^10
+**		L		long double									2^11
 **	за каждый флаг отвичает свой бит, например если считали с флагами
 **	- и +, то значени flags=5
 */
@@ -89,5 +92,6 @@ int				print_hex(size_t n, t_token *tok);
 int				print_bhex(size_t n, t_token *tok);
 int				print_unsigned(unsigned long long int n, t_token *tok);
 int				print_unsignedl(unsigned long long int n, t_token *tok);
+int				print_double(long double n, t_token *tok);
 
 #endif
