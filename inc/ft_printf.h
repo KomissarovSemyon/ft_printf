@@ -6,7 +6,7 @@
 /*   By: amerlon- <amerlon-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/27 06:11:07 by amerlon-          #+#    #+#             */
-/*   Updated: 2019/02/07 03:39:54 by amerlon-         ###   ########.fr       */
+/*   Updated: 2019/02/09 06:36:36 by amerlon-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,6 +77,13 @@ typedef	struct	s_token
 	int			flags;
 }				t_token;
 
+typedef	struct	s_double
+{
+	char		sign;
+	short		exponent;
+	long		mantissa;
+}				t_double;
+
 int				ft_printf(const char *f, ...);
 int				process_token(const char *f, int *i, va_list ap);
 
@@ -93,5 +100,10 @@ int				print_bhex(size_t n, t_token *tok);
 int				print_unsigned(unsigned long long int n, t_token *tok);
 int				print_unsignedl(unsigned long long int n, t_token *tok);
 int				print_double(long double n, t_token *tok);
+char			*str_div2(char **str);
+char			*str_add_fraction(char **s1, char *s2);
+char			*str_add_int(char **s1, char **s2);
+t_double		*get_double(double d);
+char			*get_mantissa_string(unsigned long m);
 
 #endif
