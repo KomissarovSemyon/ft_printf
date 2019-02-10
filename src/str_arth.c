@@ -6,7 +6,7 @@
 /*   By: amerlon- <amerlon-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/08 17:02:26 by amerlon-          #+#    #+#             */
-/*   Updated: 2019/02/09 04:31:34 by amerlon-         ###   ########.fr       */
+/*   Updated: 2019/02/10 09:52:39 by amerlon-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ char	*str_add_fraction(char **s1, char *s2)
 	return (res);
 }
 
-char	*str_add_int(char **s1, char **s2)
+char	*str_add_int(char **s1, char *s2, int flag)
 {
 	int		l1;
 	int		l2;
@@ -46,14 +46,14 @@ char	*str_add_int(char **s1, char **s2)
 	char	*res;
 
 	l1 = ft_strlen(*s1);
-	l2 = ft_strlen(*s2);
+	l2 = ft_strlen(s2);
 	i = l1 > l2 ? l1 : l2 + 1;
 	res = ft_strnew(i);
 	prev = 0;
 	while (--i >= 0)
 	{
 		res[i] = ((--l1 >= 0) ? (*s1)[l1] : '0') +
-			((--l2 >= 0) ? (*s2)[l2] : '0') - '0' + prev;
+			((--l2 >= 0) ? s2[l2] : '0') - '0' + prev;
 		if ((prev = res[i] > '9'))
 			res[i] -= 10;
 	}
@@ -61,8 +61,8 @@ char	*str_add_int(char **s1, char **s2)
 		res[0] = '1';
 	else if (res[0] == 0 || res[0] == '0')
 		res = ft_strshift(&res, 1);
-	ft_strdel(s1);
-	ft_strdel(s2);
+	if (flag)
+		ft_strdel(s1);
 	return (res);
 }
 
@@ -73,7 +73,10 @@ char	*str_div2(char **str)
 	int		i;
 
 	if (ft_strcmp(".0", *str) == 0)
+	{
+		free(*str);
 		return (ft_strdup(".5"));
+	}
 	if (!(res = ft_strjoinch(str, '0')))
 		return (NULL);
 	i = ft_strlen(res) - 1;
@@ -91,6 +94,7 @@ char	*str_div2(char **str)
 			now = (now - '0') / 2 + '0';
 		res[i] = now;
 	}
+	free(*str);
 	*str = res;
 	return (res);
 }
@@ -99,14 +103,27 @@ t_double	*get_double(double d)
 {
 	unsigned long	*n = (unsigned long *)&d;
 	int				i;
+	int				l;
 	t_double		*res;
 
 
 	if (!(res = (t_double *)malloc(sizeof(t_double))))
 		return (NULL);
-	i = 62;
-	res->sign = d > 0;
-	res->exponent = ((*n) << 1) >> 53;
-	res->mantissa = (*n) << 12;
+	res->sign = d < 0;
+	res->exponent = (((*n) << 1) >> 53) - 1023;
+	i = 0;
+	while (((*n) >> i & 1) != 1 && i < 52)
+		++i;
+	l = 52 - i;
+	if (!(res->mantissa = ft_strnew(l + 2)))
+	{
+		free(res);
+		return (NULL);
+	}
+	while (l + 1 > 0)
+		res->mantissa[l-- + 1] = '0' + ((((*n) >> i++) & 1) == 1);
+	res->mantissa[0] = '1';
+	res->mantissa[1] = '.';
 	return (res);
 }
+

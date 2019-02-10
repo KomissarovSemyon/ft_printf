@@ -6,7 +6,7 @@
 /*   By: amerlon- <amerlon-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/27 06:11:07 by amerlon-          #+#    #+#             */
-/*   Updated: 2019/02/09 06:36:36 by amerlon-         ###   ########.fr       */
+/*   Updated: 2019/02/10 09:41:40 by amerlon-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,7 @@ typedef	struct	s_double
 {
 	char		sign;
 	short		exponent;
-	long		mantissa;
+	char		*mantissa;
 }				t_double;
 
 int				ft_printf(const char *f, ...);
@@ -102,8 +102,11 @@ int				print_unsignedl(unsigned long long int n, t_token *tok);
 int				print_double(long double n, t_token *tok);
 char			*str_div2(char **str);
 char			*str_add_fraction(char **s1, char *s2);
-char			*str_add_int(char **s1, char **s2);
+char			*str_add_int(char **s1, char *s2, int flag);
 t_double		*get_double(double d);
-char			*get_mantissa_string(unsigned long m);
+char			*get_frac_from_bin(char *s);
+char			*get_int_from_bin(char *s);
+char			*dbl_transform(t_double *d);
+char			*dbl_to_str(double d);
 
 #endif
