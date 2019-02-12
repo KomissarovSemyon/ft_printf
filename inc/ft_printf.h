@@ -6,7 +6,7 @@
 /*   By: semyonkomissarov <semyonkomissarov@stud    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/27 06:11:07 by amerlon-          #+#    #+#             */
-/*   Updated: 2019/02/12 13:21:09 by semyonkomis      ###   ########.fr       */
+/*   Updated: 2019/02/12 14:54:37 by semyonkomis      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,6 +84,13 @@ typedef	struct	s_double
 	char		*mantissa;
 }				t_double;
 
+typedef	struct	s_ldouble
+{
+	char		sign;
+	int			exponent;
+	char		*mantissa;
+}				t_ldouble;
+
 int				ft_printf(const char *f, ...);
 int				process_token(const char *f, int *i, va_list ap);
 
@@ -107,6 +114,7 @@ char			*str_add_int(char **s1, char *s2, int flag);
 char			*get_frac_from_bin(char *s);
 char			*get_int_from_bin(char *s);
 char			*dbl_to_str(double d);
+char			*ldbl_to_str(long double d);
 char			*round_dbl(char **s, int p);
 
 #endif

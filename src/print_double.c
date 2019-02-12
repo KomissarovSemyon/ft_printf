@@ -6,7 +6,7 @@
 /*   By: semyonkomissarov <semyonkomissarov@stud    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/07 03:37:36 by amerlon-          #+#    #+#             */
-/*   Updated: 2019/02/12 13:10:17 by semyonkomis      ###   ########.fr       */
+/*   Updated: 2019/02/12 14:52:24 by semyonkomis      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,4 +73,33 @@ int	print_double(double n, t_token *tok)
 	l = print_number(s, tok, n > 0);
 	free(s);
 	return (l);
+}
+
+int		print_ldouble(long double n, t_token *tok)
+{
+	char	*s;
+	char	*tmp;
+	int		l;
+
+	tok->precision == -1 ? tok->precision = 6 : (0);
+	s = ldbl_to_str(n);
+	l = ft_strlen(ft_strchr(s, '.')) - 1;
+	if (tok->precision == 0 && (tok->flags & F_SHARP) != F_SHARP)
+		ft_strchr(s, '.')[0] = '\0';
+	if (l < tok->precision)
+	{
+		tmp = ft_strjoinnch(s, '0', tok->precision - l);
+		str_replace(&s, tmp);
+	}
+	else
+		s = round_dbl(&s, tok->precision);
+	if (n < 0)
+	{
+		tmp = ft_chjoinstr('-', s);
+		str_replace(&s, tmp);
+	}
+	tok->precision = -1;
+	l = print_number(s, tok, n > 0);
+	free(s);
+	return (0);
 }

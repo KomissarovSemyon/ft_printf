@@ -6,7 +6,7 @@
 #    By: semyonkomissarov <semyonkomissarov@stud    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/01/27 05:01:06 by amerlon-          #+#    #+#              #
-#    Updated: 2019/02/12 13:22:08 by semyonkomis      ###   ########.fr        #
+#    Updated: 2019/02/12 14:31:21 by semyonkomis      ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,7 +34,8 @@ SRC		=	ft_printf.c \
 			print_double.c \
 			str_adding.c \
 			bin_transform.c \
-			dbl_to_str.c
+			dbl_to_str.c \
+			ldbl_to_str.c
 
 OBJS = $(addprefix $(OBJ_DIR)/,$(SRC:%.c=%.o))
 LIBFT = $(LIBFT_DIR)/libft.a
