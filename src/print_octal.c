@@ -6,7 +6,7 @@
 /*   By: amerlon- <amerlon-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/03 17:10:23 by amerlon-          #+#    #+#             */
-/*   Updated: 2019/02/05 06:28:37 by amerlon-         ###   ########.fr       */
+/*   Updated: 2019/02/12 22:58:25 by amerlon-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,11 +61,9 @@ int				print_octal(size_t n, t_token *tok)
 		return (0);
 	if ((tok->flags & F_SHARP) == F_SHARP)
 	{
+		(n == 0 || tok->precision == 0) ? tok->precision = -1 : 0;
 		if (n == 0)
-		{
-			tok->precision = -1;
 			res = print_number("0", tok, 1);
-		}
 		else
 		{
 			temp = ft_chjoinstr('0', str);

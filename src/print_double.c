@@ -3,19 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   print_double.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: semyonkomissarov <semyonkomissarov@stud    +#+  +:+       +#+        */
+/*   By: amerlon- <amerlon-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/07 03:37:36 by amerlon-          #+#    #+#             */
-/*   Updated: 2019/02/12 14:52:24 by semyonkomis      ###   ########.fr       */
+/*   Updated: 2019/02/12 23:03:49 by amerlon-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-char	*round_dbl(char **s, int p)
+char		*round_dbl(char **s, int p)
 {
-	int	i;
-	int prev;
+	int		i;
+	int		prev;
 	char	*tmp;
 
 	i = ft_strchr(*s, '.') - *s + p + 1;
@@ -46,7 +46,7 @@ static void	str_replace(char **s, char *tmp)
 	*s = tmp;
 }
 
-int	print_double(double n, t_token *tok)
+int			print_double(double n, t_token *tok)
 {
 	char	*s;
 	char	*tmp;
@@ -75,7 +75,7 @@ int	print_double(double n, t_token *tok)
 	return (l);
 }
 
-int		print_ldouble(long double n, t_token *tok)
+int			print_ldouble(long double n, t_token *tok)
 {
 	char	*s;
 	char	*tmp;

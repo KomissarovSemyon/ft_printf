@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   dbl_to_str.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: semyonkomissarov <semyonkomissarov@stud    +#+  +:+       +#+        */
+/*   By: amerlon- <amerlon-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/12 13:14:57 by semyonkomis       #+#    #+#             */
-/*   Updated: 2019/02/12 13:19:11 by semyonkomis      ###   ########.fr       */
+/*   Updated: 2019/02/12 23:01:17 by amerlon-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static char	*dbl_transform_if(t_double *d)
+static char		*dbl_transform_if(t_double *d)
 {
 	char	*res;
 
@@ -26,7 +26,7 @@ static char	*dbl_transform_if(t_double *d)
 	return (res);
 }
 
-static char	*dbl_transform(t_double *d)
+static char		*dbl_transform(t_double *d)
 {
 	int		l;
 	char	*res;
@@ -41,7 +41,7 @@ static char	*dbl_transform(t_double *d)
 	else if (d->exponent > 0)
 	{
 		if (!(res = ft_strjoinnch(d->mantissa, '0',
-			ft_strlen(d->mantissa) - 3 - d->exponent)))
+			d->exponent - ft_strlen(d->mantissa) + 3)))
 			return (NULL);
 		free(d->mantissa);
 		d->mantissa = res;
@@ -57,12 +57,12 @@ static char	*dbl_transform(t_double *d)
 
 static t_double	*get_double(double d)
 {
-	unsigned long	*n = (unsigned long *)&d;
+	unsigned long	*n;
 	int				i;
 	int				l;
 	t_double		*res;
 
-
+	n = (unsigned long *)&d;
 	if (!(res = (t_double *)malloc(sizeof(t_double))))
 		return (NULL);
 	res->sign = d < 0;
@@ -83,7 +83,7 @@ static t_double	*get_double(double d)
 	return (res);
 }
 
-char		*dbl_to_str(double d)
+char			*dbl_to_str(double d)
 {
 	char		*res;
 	char		*frac;

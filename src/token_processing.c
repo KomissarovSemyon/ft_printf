@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   token_processing.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: semyonkomissarov <semyonkomissarov@stud    +#+  +:+       +#+        */
+/*   By: amerlon- <amerlon-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/27 10:22:52 by amerlon-          #+#    #+#             */
-/*   Updated: 2019/02/12 14:50:33 by semyonkomis      ###   ########.fr       */
+/*   Updated: 2019/02/12 23:02:18 by amerlon-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

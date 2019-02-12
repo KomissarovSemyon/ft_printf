@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ldbl_to_str.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: semyonkomissarov <semyonkomissarov@stud    +#+  +:+       +#+        */
+/*   By: amerlon- <amerlon-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/12 14:27:12 by semyonkomis       #+#    #+#             */
-/*   Updated: 2019/02/12 15:35:12 by semyonkomis      ###   ########.fr       */
+/*   Updated: 2019/02/12 23:02:36 by amerlon-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static char	*dbl_transform_if(t_ldouble *d)
+static char			*dbl_transform_if(t_ldouble *d)
 {
 	char	*res;
 
@@ -26,12 +26,12 @@ static char	*dbl_transform_if(t_ldouble *d)
 	return (res);
 }
 
-static char	*dbl_transform(t_ldouble *d)
+static char			*dbl_transform(t_ldouble *d)
 {
 	int		l;
 	char	*res;
 
-	if (d->sign == 0 && d->exponent == -16383 && !ft_strcmp(d->mantissa, "1."))
+	if (d->sign == 0 && d->exponent == -32767 && !ft_strcmp(d->mantissa, "1."))
 	{
 		free(d->mantissa);
 		d->mantissa = ft_strdup("0.0");
@@ -41,7 +41,7 @@ static char	*dbl_transform(t_ldouble *d)
 	else if (d->exponent > 0)
 	{
 		if (!(res = ft_strjoinnch(d->mantissa, '0',
-			ft_strlen(d->mantissa) - 3 - d->exponent)))
+			d->exponent - ft_strlen(d->mantissa) + 3)))
 			return (NULL);
 		free(d->mantissa);
 		d->mantissa = res;
@@ -57,20 +57,20 @@ static char	*dbl_transform(t_ldouble *d)
 
 static t_ldouble	*get_double(long double d)
 {
-	__uint128_t	*n = (__uint128_t *)&d;
+	__uint128_t		*n;
 	int				i;
 	int				l;
 	t_ldouble		*res;
 
-
+	n = (__uint128_t *)&d;
 	if (!(res = (t_ldouble *)malloc(sizeof(t_ldouble))))
 		return (NULL);
 	res->sign = d < 0;
-	res->exponent = (((*n) << 1) >> 113) - 16383;
+	res->exponent = (((*n) << 49 >> 49) >> 64) - 16383;
 	i = 0;
-	while (((*n) >> i & 1) != 1 && i < 112)
+	while (((*n) >> i & 1) != 1 && i < 63)
 		++i;
-	l = 112 - i;
+	l = 63 - i;
 	if (!(res->mantissa = ft_strnew(l + 2)))
 	{
 		free(res);
@@ -83,7 +83,7 @@ static t_ldouble	*get_double(long double d)
 	return (res);
 }
 
-char		*ldbl_to_str(long double d)
+char				*ldbl_to_str(long double d)
 {
 	char		*res;
 	char		*frac;
@@ -91,7 +91,6 @@ char		*ldbl_to_str(long double d)
 	t_ldouble	*dbl;
 
 	dbl = get_double(d);
-	printf("|%d %s|", dbl->exponent, dbl->mantissa);
 	dbl_transform(dbl);
 	inte = ft_copyuntil(dbl->mantissa, '.');
 	frac = ft_strchr(dbl->mantissa, '.');

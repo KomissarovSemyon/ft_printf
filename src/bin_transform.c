@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   bin_transform.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: semyonkomissarov <semyonkomissarov@stud    +#+  +:+       +#+        */
+/*   By: amerlon- <amerlon-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/09 03:16:27 by amerlon-          #+#    #+#             */
-/*   Updated: 2019/02/12 13:22:18 by semyonkomis      ###   ########.fr       */
+/*   Updated: 2019/02/12 22:59:12 by amerlon-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

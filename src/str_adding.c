@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   str_arth.c                                         :+:      :+:    :+:   */
+/*   str_adding.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: semyonkomissarov <semyonkomissarov@stud    +#+  +:+       +#+        */
+/*   By: amerlon- <amerlon-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/08 17:02:26 by amerlon-          #+#    #+#             */
-/*   Updated: 2019/02/12 13:19:14 by semyonkomis      ###   ########.fr       */
+/*   Updated: 2019/02/12 23:12:43 by amerlon-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-char	*str_add_fraction(char **s1, char *s2)
+char		*str_add_fraction(char **s1, char *s2)
 {
 	int		l1;
 	int		l2;
@@ -37,7 +37,7 @@ char	*str_add_fraction(char **s1, char *s2)
 	return (res);
 }
 
-char	*str_add_int(char **s1, char *s2, int flag)
+char		*str_add_int(char **s1, char *s2, int flag)
 {
 	int		l1;
 	int		l2;
@@ -66,10 +66,27 @@ char	*str_add_int(char **s1, char *s2, int flag)
 	return (res);
 }
 
-char	*str_div2(char **str)
+static int	div_nb(int i, char *res)
+{
+	char	now;
+
+	now = res[i];
+	if (now == '1' || now == '3' || now == '5' || now == '7' || now == '9')
+	{
+		now--;
+		res[i + 1] += 5;
+	}
+	if (now == '.')
+		return (1);
+	if (now != '0')
+		now = (now - '0') / 2 + '0';
+	res[i] = now;
+	return (0);
+}
+
+char		*str_div2(char **str)
 {
 	char	*res;
-	char	now;
 	int		i;
 
 	if (ft_strcmp(".0", *str) == 0)
@@ -82,17 +99,8 @@ char	*str_div2(char **str)
 	i = ft_strlen(res) - 1;
 	while (--i >= 0)
 	{
-		now = res[i];
-		if (now == '1' || now == '3' || now == '5' || now == '7' || now == '9')
-		{
-			now--;
-			res[i + 1] += 5;
-		}
-		if (now == '.')
+		if (div_nb(i, res))
 			break ;
-		if (now != '0')
-			now = (now - '0') / 2 + '0';
-		res[i] = now;
 	}
 	free(*str);
 	*str = res;
