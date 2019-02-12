@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amerlon- <amerlon-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: semyonkomissarov <semyonkomissarov@stud    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/27 06:11:07 by amerlon-          #+#    #+#             */
-/*   Updated: 2019/02/10 09:41:40 by amerlon-         ###   ########.fr       */
+/*   Updated: 2019/02/11 16:25:46 by semyonkomis      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,5 +108,6 @@ char			*get_frac_from_bin(char *s);
 char			*get_int_from_bin(char *s);
 char			*dbl_transform(t_double *d);
 char			*dbl_to_str(double d);
+char			*round_dbl(char **s, int p);
 
 #endif
