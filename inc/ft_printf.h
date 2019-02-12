@@ -6,7 +6,7 @@
 /*   By: amerlon- <amerlon-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/27 06:11:07 by amerlon-          #+#    #+#             */
-/*   Updated: 2019/02/12 19:59:40 by amerlon-         ###   ########.fr       */
+/*   Updated: 2019/02/12 23:20:16 by amerlon-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@
 # define S_POINTER 'p'
 # define S_PERCENT '%'
 # define S_DECIMAL 'd'
+# define S_INTEGER 'i'
 # define S_OCTAL 'o'
 # define S_HEX 'x'
 # define S_BHEX 'X'
