@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   token_processing.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amerlon- <amerlon-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: semyonkomissarov <semyonkomissarov@stud    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/27 10:22:52 by amerlon-          #+#    #+#             */
-/*   Updated: 2019/02/07 03:40:11 by amerlon-         ###   ########.fr       */
+/*   Updated: 2019/02/12 12:51:53 by semyonkomis      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,8 +90,10 @@ static int	process_token2(va_list ap, t_token *tok)
 		return (print_unsigned(va_arg(ap, unsigned long long int), tok));
 	else if (tok->spec == S_UNSIGNEDL)
 		return (print_unsignedl(va_arg(ap, unsigned long long int), tok));
-	else if (tok->spec == S_FLOAT)
-		return (print_unsignedl(va_arg(ap, long double), tok));
+	else if (tok->spec == S_FLOAT && (tok->flags & F_BL) != F_BL)
+		return (print_double(va_arg(ap, double), tok));
+	// else if (tok->spec == S_FLOAT && (tok->flags & F_BL) == F_BL)
+	// 	return (print_ldouble(va_arg(ap, long double), tok));
 	return (0);
 }
 

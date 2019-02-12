@@ -1,57 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   str_arth2.c                                        :+:      :+:    :+:   */
+/*   dbl_to_str.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amerlon- <amerlon-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: semyonkomissarov <semyonkomissarov@stud    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/02/09 03:16:27 by amerlon-          #+#    #+#             */
-/*   Updated: 2019/02/10 10:08:53 by amerlon-         ###   ########.fr       */
+/*   Created: 2019/02/12 13:14:57 by semyonkomis       #+#    #+#             */
+/*   Updated: 2019/02/12 13:19:11 by semyonkomis      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-
-char	*get_frac_from_bin(char *s)
-{
-	char	*res;
-	char	*now;
-	int		i;
-
-	now = ft_strdup(".0");
-	res = ft_strdup(".0");
-	i = 0;
-	while (s[++i])
-	{
-		now = str_div2(&now);
-		if (s[i] == '1')
-			res = str_add_fraction(&res, now);
-	}
-	free(now);
-	return (res);
-}
-
-char	*get_int_from_bin(char *s)
-{
-	char	*res;
-	char	*now;
-	char	*tmp;
-	int		i;
-
-	i = ft_strlen(s);
-	now = ft_strdup("1");
-	res = ft_strdup("0");
-	while (--i >= 0)
-	{
-		if (s[i] == '1')
-			res = str_add_int(&res, now, 1);
-		tmp = str_add_int(&now, now, 0);
-		free(now);
-		now = tmp;
-	}
-	free(now);
-	return (res);
-}
 
 static char	*dbl_transform_if(t_double *d)
 {
@@ -67,7 +26,7 @@ static char	*dbl_transform_if(t_double *d)
 	return (res);
 }
 
-char		*dbl_transform(t_double *d)
+static char	*dbl_transform(t_double *d)
 {
 	int		l;
 	char	*res;
@@ -94,6 +53,34 @@ char		*dbl_transform(t_double *d)
 		}
 	}
 	return (d->mantissa);
+}
+
+static t_double	*get_double(double d)
+{
+	unsigned long	*n = (unsigned long *)&d;
+	int				i;
+	int				l;
+	t_double		*res;
+
+
+	if (!(res = (t_double *)malloc(sizeof(t_double))))
+		return (NULL);
+	res->sign = d < 0;
+	res->exponent = (((*n) << 1) >> 53) - 1023;
+	i = 0;
+	while (((*n) >> i & 1) != 1 && i < 52)
+		++i;
+	l = 52 - i;
+	if (!(res->mantissa = ft_strnew(l + 2)))
+	{
+		free(res);
+		return (NULL);
+	}
+	while (l + 1 > 0)
+		res->mantissa[l-- + 1] = '0' + ((((*n) >> i++) & 1) == 1);
+	res->mantissa[0] = '1';
+	res->mantissa[1] = '.';
+	return (res);
 }
 
 char		*dbl_to_str(double d)

@@ -6,7 +6,7 @@
 /*   By: semyonkomissarov <semyonkomissarov@stud    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/27 06:11:07 by amerlon-          #+#    #+#             */
-/*   Updated: 2019/02/11 16:25:46 by semyonkomis      ###   ########.fr       */
+/*   Updated: 2019/02/12 13:21:09 by semyonkomis      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,14 +99,13 @@ int				print_hex(size_t n, t_token *tok);
 int				print_bhex(size_t n, t_token *tok);
 int				print_unsigned(unsigned long long int n, t_token *tok);
 int				print_unsignedl(unsigned long long int n, t_token *tok);
-int				print_double(long double n, t_token *tok);
+int				print_double(double n, t_token *tok);
+int				print_ldouble(long double n, t_token *tok);
 char			*str_div2(char **str);
 char			*str_add_fraction(char **s1, char *s2);
 char			*str_add_int(char **s1, char *s2, int flag);
-t_double		*get_double(double d);
 char			*get_frac_from_bin(char *s);
 char			*get_int_from_bin(char *s);
-char			*dbl_transform(t_double *d);
 char			*dbl_to_str(double d);
 char			*round_dbl(char **s, int p);
 

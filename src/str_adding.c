@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   str_arth.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amerlon- <amerlon-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: semyonkomissarov <semyonkomissarov@stud    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/08 17:02:26 by amerlon-          #+#    #+#             */
-/*   Updated: 2019/02/10 09:52:39 by amerlon-         ###   ########.fr       */
+/*   Updated: 2019/02/12 13:19:14 by semyonkomis      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,32 +98,3 @@ char	*str_div2(char **str)
 	*str = res;
 	return (res);
 }
-
-t_double	*get_double(double d)
-{
-	unsigned long	*n = (unsigned long *)&d;
-	int				i;
-	int				l;
-	t_double		*res;
-
-
-	if (!(res = (t_double *)malloc(sizeof(t_double))))
-		return (NULL);
-	res->sign = d < 0;
-	res->exponent = (((*n) << 1) >> 53) - 1023;
-	i = 0;
-	while (((*n) >> i & 1) != 1 && i < 52)
-		++i;
-	l = 52 - i;
-	if (!(res->mantissa = ft_strnew(l + 2)))
-	{
-		free(res);
-		return (NULL);
-	}
-	while (l + 1 > 0)
-		res->mantissa[l-- + 1] = '0' + ((((*n) >> i++) & 1) == 1);
-	res->mantissa[0] = '1';
-	res->mantissa[1] = '.';
-	return (res);
-}
-
