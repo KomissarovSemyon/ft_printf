@@ -6,7 +6,7 @@
 /*   By: amerlon- <amerlon-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/03 14:29:35 by amerlon-          #+#    #+#             */
-/*   Updated: 2019/02/03 14:51:46 by amerlon-         ###   ########.fr       */
+/*   Updated: 2019/02/13 21:50:54 by amerlon-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@ char	*ft_nchjoinstr(char *str, char c, int n)
 	int		i;
 	int		j;
 
+	if (n < 0)
+		return (ft_strdup(str));
 	res = ft_strnew(ft_strlen(str) + n);
 	j = -1;
 	while (n--)

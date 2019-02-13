@@ -35,7 +35,7 @@ def compile_tests(lib_path, header_path, filename):
 		os.mkdir(dir_tmp)
 	except:
 		pass
-	lines = filter(None, open(filename).read(1000).split('\n\n'))
+	lines = filter(None, open(filename).read(1000).split('\n'))
 	for i in range(0,len(lines)):
 		s1 = exec_code(c_write_true_begin + lines[i] + c_write_true_end, 'true', i, '')
 		s2 = exec_code(c_write_false_begin + lines[i] + c_write_true_end, 'false', i, lib_path)
