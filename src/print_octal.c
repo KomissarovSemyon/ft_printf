@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   print_octal.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amerlon- <amerlon-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: semyonkomissarov <semyonkomissarov@stud    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/03 17:10:23 by amerlon-          #+#    #+#             */
-/*   Updated: 2019/02/12 22:58:25 by amerlon-         ###   ########.fr       */
+/*   Updated: 2019/02/13 17:20:46 by semyonkomis      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,7 @@ int				print_octal(size_t n, t_token *tok)
 	int		res;
 
 	tok->flags = tok->flags & (~F_PLUS);
+	tok->flags = tok->flags & (~F_SPACE);
 	if (!(str = ft_ltoa_sizet_octal(cast_to_flag(n, tok))))
 		return (0);
 	if ((tok->flags & F_SHARP) == F_SHARP)
