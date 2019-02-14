@@ -6,7 +6,7 @@
 /*   By: semyonkomissarov <semyonkomissarov@stud    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/03 17:10:23 by amerlon-          #+#    #+#             */
-/*   Updated: 2019/02/13 17:20:46 by semyonkomis      ###   ########.fr       */
+/*   Updated: 2019/02/14 12:24:35 by semyonkomis      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ int				print_octal(size_t n, t_token *tok)
 		return (0);
 	if ((tok->flags & F_SHARP) == F_SHARP)
 	{
-		(n == 0 || tok->precision == 0) ? tok->precision = -1 : 0;
+		(n == 0 && tok->precision == 0) ? tok->precision = -1 : 0;
 		if (n == 0)
 			res = print_number("0", tok, 1);
 		else

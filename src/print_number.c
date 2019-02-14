@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   print_number.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amerlon- <amerlon-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: semyonkomissarov <semyonkomissarov@stud    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/31 12:39:33 by amerlon-          #+#    #+#             */
-/*   Updated: 2019/02/03 20:00:16 by amerlon-         ###   ########.fr       */
+/*   Updated: 2019/02/14 12:28:16 by semyonkomis      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,10 +47,10 @@ static int	print_positive_with_prec(char *str, t_token *tok)
 	int		res;
 	char	*temp;
 
-	if (str[0] == '0' && tok->precision == 0)
+	l = ft_strlen(str);
+	if (str[l - 1] == '0' && tok->precision == 0)
 		return (print_positive("", tok));
 	tok->flags = tok->flags & (~F_ZERO);
-	l = ft_strlen(str);
 	if (tok->precision <= l)
 		return (print_positive(str, tok));
 	temp = ft_nchjoinstr(str, '0', tok->precision - l);
